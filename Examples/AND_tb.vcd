@@ -1,0 +1,105 @@
+$date
+	Wed Sep 11 18:52:39 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module AND_tb $end
+$var wire 2 ! v [2:1] $end
+$var reg 2 " a [2:1] $end
+$var reg 2 # b [2:1] $end
+$scope module AND_ $end
+$var wire 2 $ a [2:1] $end
+$var wire 2 % b [2:1] $end
+$var wire 2 & v [2:1] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 &
+b0 %
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#10
+b10 "
+b10 $
+#20
+b1 "
+b1 $
+#30
+b11 "
+b11 $
+#40
+b10 #
+b10 %
+b0 "
+b0 $
+#50
+b10 !
+b10 &
+b10 "
+b10 $
+#60
+b0 !
+b0 &
+b1 "
+b1 $
+#70
+b10 !
+b10 &
+b11 "
+b11 $
+#80
+b0 !
+b0 &
+b1 #
+b1 %
+b0 "
+b0 $
+#90
+b10 "
+b10 $
+#100
+b1 !
+b1 &
+b1 "
+b1 $
+#110
+b11 "
+b11 $
+#120
+b0 !
+b0 &
+b11 #
+b11 %
+b0 "
+b0 $
+#130
+b10 !
+b10 &
+b10 "
+b10 $
+#140
+b1 !
+b1 &
+b1 "
+b1 $
+#150
+b11 !
+b11 &
+b11 "
+b11 $
+#160
+b0 !
+b0 &
+b0 #
+b0 %
+b0 "
+b0 $
