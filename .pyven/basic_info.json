@@ -1,0 +1,7 @@
+{
+    "repo_name": "VerilogTestBenchGenerator",
+    "requirements": [
+        "streamlit",
+        "opencv-python-headless"
+    ]
+}

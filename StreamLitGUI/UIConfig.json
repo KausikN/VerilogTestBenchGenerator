@@ -1,0 +1,10 @@
+{
+    "PROJECT_NAME": "VerilogTestBenchGenerator",
+    "PROJECT_LINK": "https://github.com/KausikN/VerilogTestBenchGenerator",
+
+    "PROJECT_DESC": "A Verilog Code Test Bench Generator using Python",
+
+    "PROJECT_README": "README.md",
+
+    "PROJECT_MODES": ["Testbench Generator"]
+}

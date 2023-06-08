@@ -1,0 +1,124 @@
+{
+    "name": "VerilogTestBenchGenerator",
+    "repoLink": "https://github.com/KausikN/VerilogTestBenchGenerator",
+    "localPath": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+    "modules": {
+        "app.py": {
+            "name": "app",
+            "type": "local",
+            "link": "https://github.com/KausikN/VerilogTestBenchGenerator/blob/master/app.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+            "subDir": "",
+            "dependencies": [
+                "os.py",
+                "streamlit.py",
+                "json.py"
+            ]
+        },
+        "TestBenchGenerator.py": {
+            "name": "TestBenchGenerator",
+            "type": "local",
+            "link": "https://github.com/KausikN/VerilogTestBenchGenerator/blob/master/TestBenchGenerator.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+            "subDir": "",
+            "dependencies": [
+                "re.py",
+                "random.py"
+            ]
+        },
+        "TestBenchGenerator_GUI.py": {
+            "name": "TestBenchGenerator_GUI",
+            "type": "local",
+            "link": "https://github.com/KausikN/VerilogTestBenchGenerator/blob/master/TestBenchGenerator_GUI.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+            "subDir": "",
+            "dependencies": [
+                "tkinter.py",
+                "re.py",
+                "random.py"
+            ]
+        },
+        "Old/MainInputFrame_WithReGeX_AllPossInputs.py": {
+            "name": "MainInputFrame_WithReGeX_AllPossInputs",
+            "type": "local",
+            "link": "https://github.com/KausikN/VerilogTestBenchGenerator/blob/master/Old/MainInputFrame_WithReGeX_AllPossInputs.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+            "subDir": "Old",
+            "dependencies": [
+                "tkinter.py",
+                "re.py",
+                "random.py"
+            ]
+        },
+        "Old/TestBenchGenerator_NonGUI_';'Delimited.py": {
+            "name": "TestBenchGenerator_NonGUI_';'Delimited",
+            "type": "local",
+            "link": "https://github.com/KausikN/VerilogTestBenchGenerator/blob/master/Old/TestBenchGenerator_NonGUI_';'Delimited.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+            "subDir": "Old",
+            "dependencies": [
+                "re.py",
+                "random.py"
+            ]
+        },
+        "Old/TestBenchGenerator_NonGUI_'newline'Delimited.py": {
+            "name": "TestBenchGenerator_NonGUI_'newline'Delimited",
+            "type": "local",
+            "link": "https://github.com/KausikN/VerilogTestBenchGenerator/blob/master/Old/TestBenchGenerator_NonGUI_'newline'Delimited.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+            "subDir": "Old",
+            "dependencies": [
+                "re.py",
+                "random.py"
+            ]
+        },
+        "random.py": {
+            "name": "random",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/VerilogTestBenchGenerator",
+            "subDir": "",
+            "dependencies": []
+        },
+        "re.py": {
+            "name": "re",
+            "type": "missing",
+            "link": "",
+            "parentDir": "",
+            "subDir": "",
+            "dependencies": []
+        },
+        "os.py": {
+            "name": "os",
+            "type": "missing",
+            "link": "",
+            "parentDir": "",
+            "subDir": "",
+            "dependencies": []
+        },
+        "tkinter.py": {
+            "name": "tkinter",
+            "type": "missing",
+            "link": "",
+            "parentDir": "",
+            "subDir": "",
+            "dependencies": []
+        },
+        "json.py": {
+            "name": "json",
+            "type": "missing",
+            "link": "",
+            "parentDir": "",
+            "subDir": "",
+            "dependencies": []
+        },
+        "streamlit.py": {
+            "name": "streamlit",
+            "type": "missing",
+            "link": "",
+            "parentDir": "",
+            "subDir": "",
+            "dependencies": []
+        }
+    }
+}

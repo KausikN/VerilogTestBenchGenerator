@@ -1,3 +1,7 @@
+"""
+Test Bench Generator - Non GUI - 'newline' Delimited
+"""
+
 #--Imports------------------------------------------------------------------
 import re
 import random
@@ -133,34 +137,26 @@ def InputOutputVerilogParser(filepath, destfolder):
 	global modulename
 
 	contents = FileContents(filepath)
-	# contents = contents.split("\n")
-	contents = contents.split(";")
-	iterindex = 0
-	for i in contents:
-		contents[iterindex] = i + ";"
-		iterindex+=1
+	contents = contents.split("\n")
+	# contents = contents.split(";")
+	# iterindex = 0
+	# for i in contents:
+	# 	contents[iterindex] = i + ";"
+	# 	iterindex+=1
 	print("\n\nCONTENTS: ", contents, "\n\n")
 	for line in contents:
 		print ("Line(wos): ", line)
 		line = line.strip()	
 		print ("Line(ws): ", line)
 
-		line = line.split('\n')
-		line = ' '.join(line)
-		# print(line)
-
 		if re.search('module\s+', line):
 			modulename = re.findall('module\s+(.*)\(', line)[0].strip()
 
 		if re.search('input\s+', line):
-			print("\nRE: ", re.findall('input\s+(.*);', line), "\n")
 			val = re.findall('input\s+(.*);', line)[0].strip()
 			if re.search('^\[', val) == None:
 				print ("Input: ", val, " -- ", val.split(","))
 				inps = val.split(",")
-				for index in range(len(inps)):
-					inps[index] = inps[index].strip()
-
 				inpssize = []
 				i=0
 				for o in inps:
@@ -178,9 +174,6 @@ def InputOutputVerilogParser(filepath, destfolder):
 
 				print ("Input: ", val, " -- ", val.split(","))
 				inps = val.split(",")
-				for index in range(len(inps)):
-					inps[index] = inps[index].strip()
-
 				inpssize = []
 				i=0
 				for o in inps:
@@ -200,9 +193,6 @@ def InputOutputVerilogParser(filepath, destfolder):
 			if re.search('^\[', val) == None:
 				print ("Output: ", val, " -- ", val.split(","))
 				outs = val.split(",")
-				for index in range(len(outs)):
-					outs[index] = outs[index].strip()
-
 				outssize = []
 				i=0
 				for o in outs:
@@ -221,9 +211,6 @@ def InputOutputVerilogParser(filepath, destfolder):
 
 				print ("Output: ", val, " -- ", val.split(","))
 				outs = val.split(",")
-				for index in range(len(outs)):
-					outs[index] = outs[index].strip()
-				
 				outssize = []
 				i=0
 				for o in outs:

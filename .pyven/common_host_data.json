@@ -1,0 +1,7 @@
+{
+    "files_to_download": [
+        "StreamLitGUI/",
+        "app.py",
+        "VerilogTestBenchGenerator.py"
+    ]
+}

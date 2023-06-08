@@ -1,4 +1,9 @@
+"""
+Verilog Test Bench Generator - GUI
+"""
+
 #--Imports------------------------------------------------------------------
+import tkinter as tk
 import re
 import random
 #---------------------------------------------------------------------------
@@ -42,16 +47,30 @@ clock_inp_names = ['clk', 'clock']
 
 #--Functions----------------------------------------------------------------
 #--1--
-def fetch_inputs(fields):
-	global first_input
-	input_dict = {}
-
+def makeform(root, fields):
+	entries = []
 	for field in fields:
-		text  = input(field + ": ")
+		row = tk.Frame(root)
+		lab = tk.Label(row, width=15, text=field, anchor='w')
+		ent = tk.Entry(row)
+		row.pack(side=tk.TOP, fill=tk.X, padx=5, pady=5)
+		lab.pack(side=tk.LEFT)
+		ent.pack(side=tk.RIGHT, expand=tk.YES, fill=tk.X)
+		entries.append((field, ent))
+	return entries
+
+#--2--
+def fetch_inputs(entries):
+	global first_input
+	input_json = {}
+
+	for entry in entries:
+		field = entry[0]
+		text  = entry[1].get()
 		if field == "EnterArrayTypeDataFieldHere":
 			text = text.split(",")
-		input_dict[field] = text
-	print(input_dict)
+		input_json[field] = text
+	print(input_json)
 
 	first_input = False
 
@@ -63,24 +82,24 @@ def fetch_inputs(fields):
 	global nooftestcases
 	global alltestcases
 
-	if input_dict["Verilog Code Location (with filename)"] != '':
-		inputfileloc = input_dict["Verilog Code Location (with filename)"]
-	if input_dict["Verilog Module Name"] != '':
-		modulename = input_dict["Verilog Module Name"]
-	if input_dict["Destination Folder"] != '':
-		destfolder = input_dict["Destination Folder"]
-	if input_dict["Time Delay"] != '':
-		timedelay = int(input_dict["Time Delay"])
-	if input_dict["Clock Delay"] != '':
-		clockdelay = int(input_dict["Clock Delay"])
-	if input_dict["No of Test Cases"] != '':
-		nooftestcases = int(input_dict["No of Test Cases"])
-	elif input_dict["No of Test Cases"] == '':
+	if input_json["Verilog Code Location (with filename)"] != '':
+		inputfileloc = input_json["Verilog Code Location (with filename)"]
+	if input_json["Verilog Module Name"] != '':
+		modulename = input_json["Verilog Module Name"]
+	if input_json["Destination Folder"] != '':
+		destfolder = input_json["Destination Folder"]
+	if input_json["Time Delay"] != '':
+		timedelay = int(input_json["Time Delay"])
+	if input_json["Clock Delay"] != '':
+		clockdelay = int(input_json["Clock Delay"])
+	if input_json["No of Test Cases"] != '':
+		nooftestcases = int(input_json["No of Test Cases"])
+	elif input_json["No of Test Cases"] == '':
 		alltestcases = True
 
 	InputOutputVerilogParser(filepath=inputfileloc, destfolder=destfolder)
 
-#--2--
+#--3--
 def FileContents(filepath):
 	f = open(filepath, "r")
 	return f.read()
@@ -121,8 +140,7 @@ def RemoveVectorArray(name):
 		name = re.findall('^(.+)(\[.*:.*\])', name)[0]
 		return name.strip()
 	return name.strip()
-
-#--3--
+#--4--
 def InputOutputVerilogParser(filepath, destfolder):
 	global inputs
 	global inputs_withsizes
@@ -133,26 +151,34 @@ def InputOutputVerilogParser(filepath, destfolder):
 	global modulename
 
 	contents = FileContents(filepath)
-	contents = contents.split("\n")
-	# contents = contents.split(";")
-	# iterindex = 0
-	# for i in contents:
-	# 	contents[iterindex] = i + ";"
-	# 	iterindex+=1
+	# contents = contents.split("\n")
+	contents = contents.split(";")
+	iterindex = 0
+	for i in contents:
+		contents[iterindex] = i + ";"
+		iterindex+=1
 	print("\n\nCONTENTS: ", contents, "\n\n")
 	for line in contents:
 		print ("Line(wos): ", line)
 		line = line.strip()	
 		print ("Line(ws): ", line)
 
+		line = line.split('\n')
+		line = ' '.join(line)
+		# print(line)
+
 		if re.search('module\s+', line):
 			modulename = re.findall('module\s+(.*)\(', line)[0].strip()
 
 		if re.search('input\s+', line):
+			print("\nRE: ", re.findall('input\s+(.*);', line), "\n")
 			val = re.findall('input\s+(.*);', line)[0].strip()
 			if re.search('^\[', val) == None:
 				print ("Input: ", val, " -- ", val.split(","))
 				inps = val.split(",")
+				for index in range(len(inps)):
+					inps[index] = inps[index].strip()
+
 				inpssize = []
 				i=0
 				for o in inps:
@@ -170,6 +196,9 @@ def InputOutputVerilogParser(filepath, destfolder):
 
 				print ("Input: ", val, " -- ", val.split(","))
 				inps = val.split(",")
+				for index in range(len(inps)):
+					inps[index] = inps[index].strip()
+
 				inpssize = []
 				i=0
 				for o in inps:
@@ -189,6 +218,9 @@ def InputOutputVerilogParser(filepath, destfolder):
 			if re.search('^\[', val) == None:
 				print ("Output: ", val, " -- ", val.split(","))
 				outs = val.split(",")
+				for index in range(len(outs)):
+					outs[index] = outs[index].strip()
+
 				outssize = []
 				i=0
 				for o in outs:
@@ -207,6 +239,9 @@ def InputOutputVerilogParser(filepath, destfolder):
 
 				print ("Output: ", val, " -- ", val.split(","))
 				outs = val.split(",")
+				for index in range(len(outs)):
+					outs[index] = outs[index].strip()
+				
 				outssize = []
 				i=0
 				for o in outs:
@@ -237,7 +272,7 @@ def InputOutputVerilogParser(filepath, destfolder):
 
 	CreateOutputFile()
 
-#--4--
+#--5--
 def AssignFormatValues():
 	global format_values
 	global inputs
@@ -353,7 +388,7 @@ def AssignFormatValues():
 
 	print("FORMAT: ", format_values)
 
-#--5--
+#--6--
 def LimitedTestCases(nooftestcases, timedelay, inputs, inputs_sizes):
 	s = ''
 	for i in range(nooftestcases):
@@ -437,7 +472,7 @@ def GenNextInput(totinp):
 
 
 
-#--6--
+#--7--
 def CreateOutputFile():
 	global testbenchcode_format
 	global format_values
@@ -461,4 +496,12 @@ def CreateOutputFile():
 
 #--Main Code----------------------------------------------------------------
 
-fetch_inputs(fields)
+root = tk.Tk()
+ents = makeform(root, fields)
+root.bind('<Return>', (lambda event, e=ents: fetch_inputs(e)))   
+b1 = tk.Button(root, text='Done',
+	command=(lambda e=ents: fetch_inputs(e)))
+b1.pack(side=tk.LEFT, padx=5, pady=5)
+b2 = tk.Button(root, text='Quit', command=root.quit)
+b2.pack(side=tk.LEFT, padx=5, pady=5)
+root.mainloop()

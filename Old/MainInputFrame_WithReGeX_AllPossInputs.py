@@ -1,3 +1,7 @@
+"""
+Main Input Frame - With ReGeX - All Possible Inputs
+"""
+
 #--Imports------------------------------------------------------------------
 import tkinter as tk
 import re
